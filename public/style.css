@@ -1,0 +1,33 @@
+body{
+  background-color: #cdcdcd;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+.navbar{
+  margin: 0 auto;
+  background-color: #ff9900;
+  border-radius: 0px 0px 10px 10px;
+  border: 3px solid #303fc8;
+  border-top: 0;
+  width: 250px;
+  padding: 2%;
+  overflow: hidden;
+}
+.navbar a{
+  padding: 3%;
+  text-decoration: none;
+  color: #303fc8;
+  border-right: 3px solid #303fc8;
+}
+.navbar a:hover{
+  border-radius: 5%;
+  background: radial-gradient(rgba(153, 153, 153, 0.5), rgba(153, 153, 153, 0));
+}
+.navbar a:last-child{
+  border-right: 0
+}
+.posts-content hr{
+  width: 20%;
+}

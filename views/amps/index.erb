@@ -1,0 +1,6 @@
+<h1>Amps</h1>
+<% @amps.each do |amp|%>
+  <div>
+    <h3><a href="amps/<%= amp[:id] %>"><%=amp[:name]%></a></h3>
+  </div>
+<% end %>

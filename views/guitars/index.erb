@@ -1,0 +1,6 @@
+<h1>Guitars</h1>
+<% @guitars.each do |guitar|%>
+  <div>
+    <h3><a href="guitars/<%= guitar[:id] %>"><%=guitar[:name]%></a></h3>
+  </div>
+<% end %>
