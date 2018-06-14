@@ -1,6 +1,9 @@
 <h1>Amps</h1>
+<hr>
 <% @amps.each do |amp|%>
-  <div>
+  <div class="content">
     <h3><a href="amps/<%= amp[:id] %>"><%=amp[:name]%></a></h3>
+    <p><%=amp[:description][0..35]+"..."%></p>
+    <hr>
   </div>
 <% end %>
