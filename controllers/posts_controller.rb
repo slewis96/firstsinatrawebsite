@@ -31,39 +31,72 @@ class PostsController <Sinatra::Base
   #INDEX
   get '/posts' do
     @title = "Posts Home"
-    @posts = $posts
+    @posts = Posts.all
     erb :"posts/index"
+  end
+
+  #NEW
+  get '/posts/new' do
+    @post = {
+      id: "",
+      title: "",
+      body: ""
+    }
+    erb :'posts/new'
+  end
+
+  #CREATE
+  post '/posts/' do
+    # new_post = {
+    #   id: $posts.length,
+    #   title: params[:title],
+    #   body: params[:body]
+    # }
+    # $posts.push(new_post)
+    # redirect "/posts"
+    post = Posts.new
+    post.title = params[:title]
+    post.body = params[:body]
+    post.save
+    redirect "/posts"
+  end
+
+  #EDIT
+  get '/posts/:id/edit' do
+    id = params[:id].to_i
+    @post = $posts[id]
+    erb :'posts/edit'
+  end
+
+  #UPDATE
+  put '/posts/:id' do
+    id = params[:id].to_i
+    # post = $posts[id]
+    # post[:title] = params[:title]
+    # post[:body] = params[:title]
+    # $posts[id] = post
+    #   redirect "/posts"
+    edited_post = {
+      id: id,
+      title: params[:title],
+      body: params[:body]
+    }
+    $posts[id] = edited_post
+    redirect "/posts"
   end
 
   #SHOW
   get '/posts/:id' do
     id = params[:id].to_i
-    @post = $posts[id]
-    @title = @post[:title]
+    @post = Posts.find(id)
+    @title = @post.title
     erb :"posts/show"
-  end
-
-  #NEW
-  get '/posts/new' do
-
-  end
-  #CREATE
-  post '/posts/:id' do
-
-  end
-
-  #EDIT
-  get '/posts/:id/edit' do
-
-  end
-
-  #UPDATE
-  put '/posts/:id' do
-
   end
 
   #DESTROY
   delete '/posts/:id' do
-
+    id = params[:id].to_i
+    $posts.delete_at(id)
+    redirect "/posts"
   end
 end
