@@ -33,7 +33,17 @@ class Posts
 
   def save
     conn = Posts.open_connection
-    sql = "INSERT INTO posts(title, body) VALUES('#{self.title}','#{self.body}')"
+    if(!self.id)
+      sql = "INSERT INTO posts(title, body) VALUES('#{self.title}','#{self.body}')"
+    else
+      sql = "UPDATE posts SET title = '#{self.title}', body = '#{self.body}' WHERE id = #{self.id}"
+    end
+    conn.exec(sql)
+  end
+
+  def self.destroy(id)
+    conn = Posts.open_connection
+    sql = "DELETE FROM posts WHERE id = #{id}"
     conn.exec(sql)
   end
 

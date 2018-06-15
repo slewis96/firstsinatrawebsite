@@ -1,4 +1,15 @@
-<h1><%= @guitar[:name] %></h1>
-<img src="<%=@guitar[:img]%>"></img>
-<p><%= @guitar[:price] %></p>
-<small><%= @guitar[:description] %></small>
+<div class="guitarshow">
+  <a href="<%=@guitar.id%>/edit">Edit post</a><br>
+  <form action="/guitars/<%= @guitar.id %>" method="POST">
+    <input type="submit" value="Delete post">
+    <!-- over rights the guitar -->
+    <input type="hidden" name="_method" value="DELETE">
+  </form><br>
+  <a href="/guitars">&lt;&lt;Back</a>
+  <h1><%= @guitar.name %></h1>
+  <img class="guitarimg" src="<%=@guitar.img%>"></img>
+  <br><br>
+  <p>~£<%= @guitar.price %></p>
+  <br>
+  <p><%= @guitar.description %></p>
+</div>

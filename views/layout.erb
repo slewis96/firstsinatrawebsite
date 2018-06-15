@@ -3,15 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title><%= @title %></title>
-    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:900" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <%= erb :'partials/navbar'%><br>
     <div class="yieldedcontent">
       <%= yield %>
     </div>
-    <footer>
-      <img src="https://i.imgur.com/4L5yX2A.gif" alt="">
-    </footer>
   </body>
 </html>
