@@ -1,0 +1,16 @@
+<form class="form"  action="/amps/<%= @amp.id %>" method="POST">
+  <label>Title:</label><br>
+  <input type="text" name="name" placeholder="The name..." value="<%= @amp.name %>"><br>
+  <label>Price:</label><br>
+  <input type="text" name="price" placeholder="£0000" value="<%= @amp.price %>"><br>
+  <label>Image:</label><br>
+  <input type="text" name="img" placeholder="url to image" value="<%= @amp.img %>"><br>
+  <label>Body:</label><br>
+  <textarea name="description" placeholder="The description..." rows="8" cols="80"><%= @amp.description %></textarea>
+  <div class="">
+    <input type="submit" value="Save Entry">
+  </div>
+  <% if(@amp.id) %>
+    <input type="hidden" name="_method" value="PUT">
+  <% end %>
+</form>

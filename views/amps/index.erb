@@ -1,10 +1,16 @@
-<h1>Amps</h1>
-<a></a>
-<hr>
+<div class="yieldedcontent" style="padding:10px;width:50%;margin:0 auto;">
+  <h3 style="margin-top:10px"><a href="guitars/new">New Amp Post</a></h3>
+  <h1>Amps:</h1>
+</div>
+<div class="flex wrapper">
 <% @amps.each do |amp|%>
+<div class="guitarcontent">
   <div class="content">
-    <h3><a href="amps/<%= amp[:id] %>"><%=amp[:name]%></a></h3>
-    <p><%=amp[:description][0..35]+"..."%></p>
-    <hr>
+    <img class="guitarindeximg" src="<%= amp.img %>"></img>
+    <h3><a href="amps/<%= amp.id %>"><%=amp.name%></a></h3>
+    <p><%=amp.description[0..60]+"..."%></p>
+    <a href="amps/<%= amp.id %>">Read more...</a>
   </div>
+</div>
 <% end %>
+</div>

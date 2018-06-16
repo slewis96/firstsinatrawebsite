@@ -1,3 +1,4 @@
+<div class="yieldedcontent">
 <a href="<%=@post.id%>/edit">Edit post</a><br>
 <form action="/posts/<%= @post.id %>" method="POST">
   <input type="submit" value="Delete post">
@@ -7,3 +8,4 @@
 <img src="https://www.fillmurray.com/100/100" alt="mooray">
 <h1><%= @post.title %></h1>
 <p class="contentbody"><%= @post.body %></p>
+</div>

@@ -1,11 +1,16 @@
-<a href="guitars/new">New post</a>
-<h1>Guitars</h1>
-<hr>
+<div class="yieldedcontent" style="padding:10px;width:50%;margin:0 auto;">
+  <h3 style="margin-top:10px"><a href="guitars/new">New Guitar Post</a></h3>
+  <h1>Guitars:</h1>
+</div>
+<div class="flex wrapper">
 <% @guitars.each do |guitar|%>
+<div class="guitarcontent">
   <div class="content">
-    <h3><%=guitar.name%></h3>
+    <img class="guitarindeximg" src="<%= guitar.img %>"></img>
+    <h3><a href="guitars/<%= guitar.id %>"><%=guitar.name%></a></h3>
     <p><%=guitar.description[0..60]+"..."%></p>
     <a href="guitars/<%= guitar.id %>">Read more...</a>
-    <hr>
   </div>
+</div>
 <% end %>
+</div>

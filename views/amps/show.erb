@@ -1,4 +1,17 @@
-<h1><%= @amp[:name] %></h1>
-<img src="<%=@amp[:img]%>"></img>
-<p><%= @amp[:price] %></p>
-<small><%= @amp[:description] %></small>
+<div class="yieldedcontent">
+<div class="guitarshow">
+  <a href="/amps">&lt;&lt;Back</a>
+  <h1><%= @amp.name %></h1>
+  <img class="guitarimg" src="<%=@amp.img%>"></img>
+  <br><br>
+  <p>~£<%= @amp.price %></p>
+  <br>
+  <p><%= @amp.description %></p>
+  <a href="<%=@amp.id%>/edit">Edit post</a><br>
+  <form action="/amps/<%= @amp.id %>" method="POST">
+    <input type="submit" value="Delete post">
+    <!-- over rights the guitar -->
+    <input type="hidden" name="_method" value="DELETE">
+  </form><br>
+</div>
+</div>

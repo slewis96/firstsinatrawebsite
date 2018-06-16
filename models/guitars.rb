@@ -34,6 +34,7 @@ class Guitars
   end
 
   def save
+    puts "UPDATE guitars SET name = '#{self.name}', price = #{self.price}, img = '#{self.img}', description = '#{self.description}' WHERE id = #{self.id}"
     conn = Guitars.open_connection
     if(!self.id)
       sql = "INSERT INTO guitars(name, price, img, description) VALUES('#{self.name}', #{self.price} ,'#{self.img}','#{self.description}')"
