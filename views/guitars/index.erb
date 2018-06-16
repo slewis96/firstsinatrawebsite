@@ -7,7 +7,7 @@
 <div class="guitarcontent">
   <div class="content">
     <img class="guitarindeximg" src="<%= guitar.img %>"></img>
-    <h3><a href="guitars/<%= guitar.id %>"><%=guitar.name%></a></h3>
+    <h3><a id="names" href="guitars/<%= guitar.id %>"><%=guitar.name%></a></h3>
     <p><%=guitar.description[0..60]+"..."%></p>
     <a href="guitars/<%= guitar.id %>">Read more...</a>
   </div>
