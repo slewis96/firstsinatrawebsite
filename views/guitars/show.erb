@@ -7,9 +7,10 @@
   <p>~£<%= @guitar.price %></p>
   <br>
   <p><%= @guitar.description %></p>
-  <a href="<%=@guitar.id%>/edit">Edit post</a><br>
+  <br>
+  <a class="button" href="<%=@guitar.id%>/edit" style="color: white; text-shadow: none; border: 1px solid white; padding: 3%;">Edit post</a><br><br>
   <form action="/guitars/<%= @guitar.id %>" method="POST">
-    <input type="submit" value="Delete post">
+    <input class="button" type="submit" value="Delete post">
     <!-- over rights the guitar -->
     <input type="hidden" name="_method" value="DELETE">
   </form><br>
