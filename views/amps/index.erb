@@ -1,6 +1,7 @@
 <div class="yieldedcontent" style="padding:10px;width:50%;margin:0 auto;">
   <h3 style="margin-top:10px"><a href="guitars/new">New Amp Post</a></h3>
   <h1>Amps:</h1>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a amp..">
 </div>
 <div class="flex wrapper">
 <% @amps.each do |amp|%>
@@ -13,4 +14,22 @@
   </div>
 </div>
 <% end %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function myFunction() {
+  var input = $('#myInput').val();
+  var filter = input.toUpperCase();
+  var div = $('.guitarcontent');
+
+  for (i = 0; i < div.length; i++) {
+    var ampInfo = div[i].getElementsByClassName('content');
+    var ampName = $('a#names');
+    if (ampName[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        div[i].style.display = "";
+    } else {
+        div[i].style.display = "none";
+    }
+  }
+}
+</script>
 </div>

@@ -24,7 +24,13 @@ class Guitars
     guitar.description = guitar_data['description']
     return guitar
   end
-
+  def sanitise(string)
+    string = string.gsub("'", "''")
+    string = string.gsub("<", "&lt;")
+    string = string.gsub(">", "&gt;")
+    puts string
+    return string
+  end
   def self.find(id)
     conn = self.open_connection
     sql = "SELECT * FROM guitars WHERE id = #{id}"
@@ -34,12 +40,14 @@ class Guitars
   end
 
   def save
-    puts "UPDATE guitars SET name = '#{self.name}', price = #{self.price}, img = '#{self.img}', description = '#{self.description}' WHERE id = #{self.id}"
+    self.name = self.sanitise(self.name)
+    self.img = self.sanitise(self.img)
+    self.description = self.sanitise(self.description)
     conn = Guitars.open_connection
     if(!self.id)
-      sql = "INSERT INTO guitars(name, price, img, description) VALUES('#{self.name}', #{self.price} ,'#{self.img}','#{self.description}')"
+      sql = "INSERT INTO guitars(name, price, img, description) VALUES('#{self.name}', #{self.price} , '/imgs/guitars/#{self.img}','#{self.description}')"
     else
-      sql = "UPDATE guitars SET name = '#{self.name}', price = #{self.price}, img = '#{self.img}', description = '#{self.description}' WHERE id = #{self.id}"
+      sql = "UPDATE guitars SET name = '#{self.name}', price = #{self.price}, img = '/imgs/guitars/#{self.img}', description = '#{self.description}' WHERE id = #{self.id}"
     end
     conn.exec(sql)
   end
@@ -49,5 +57,4 @@ class Guitars
     sql = "DELETE FROM guitars WHERE id = #{id}"
     conn.exec(sql)
   end
-
 end

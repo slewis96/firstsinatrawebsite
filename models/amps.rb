@@ -34,12 +34,11 @@ class Amps
   end
 
   def save
-    puts "UPDATE amps SET name = '#{self.name}', price = #{self.price}, img = '#{self.img}', description = '#{self.description}' WHERE id = #{self.id}"
     conn = Amps.open_connection
     if(!self.id)
-      sql = "INSERT INTO amps(name, price, img, description) VALUES('#{self.name}', #{self.price} ,'#{self.img}','#{self.description}')"
+      sql = "INSERT INTO amps(name, price, img, description) VALUES('#{self.name}', #{self.price} ,'/imgs/guitars/#{self.img}','#{self.description}')"
     else
-      sql = "UPDATE amps SET name = '#{self.name}', price = #{self.price}, img = '#{self.img}', description = '#{self.description}' WHERE id = #{self.id}"
+      sql = "UPDATE amps SET name = '#{self.name}', price = #{self.price}, img = '/imgs/guitars/#{self.img}', description = '#{self.description}' WHERE id = #{self.id}"
     end
     conn.exec(sql)
   end

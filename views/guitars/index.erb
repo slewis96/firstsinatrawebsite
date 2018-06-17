@@ -1,10 +1,11 @@
 <div class="yieldedcontent" style="padding:10px;width:50%;margin:0 auto;">
   <h3 style="margin-top:10px"><a href="guitars/new">New Guitar Post</a></h3>
   <h1>Guitars:</h1>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a guitar..">
 </div>
-<div class="flex wrapper">
+<div id="guitarWrapper" class="flex wrapper">
 <% @guitars.each do |guitar|%>
-<div class="guitarcontent">
+<div id="guitars" class="guitarcontent">
   <div class="content">
     <img class="guitarindeximg" src="<%= guitar.img %>"></img>
     <h3><a id="names" href="guitars/<%= guitar.id %>"><%=guitar.name%></a></h3>
@@ -13,4 +14,22 @@
   </div>
 </div>
 <% end %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function myFunction() {
+  var input = $('#myInput').val();
+  var filter = input.toUpperCase();
+  var div = $('.guitarcontent');
+
+  for (i = 0; i < div.length; i++) {
+    var guitarInfo = div[i].getElementsByClassName('content');
+    var guitarName = $('a#names');
+    if (guitarName[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        div[i].style.display = "";
+    } else {
+        div[i].style.display = "none";
+    }
+  }
+}
+</script>
 </div>
