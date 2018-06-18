@@ -4,7 +4,16 @@
   <label>Price:</label><br>
   <input type="text" name="price" placeholder="£0000" value="<%= @amp.price %>"><br>
   <label>Image:</label><br>
-  <input type="text" name="img" placeholder="url to image" value="<%= @amp.img %>"><br>
+  <%
+  puts @amp.img.class
+    unless @amp.img.class == NilClass
+      img = @amp.img
+      img = img[img.index('/')+1, img.length]
+      img = img[img.index('/')+1, img.length]
+      img = img[img.index('/')+1, img.length]
+    end
+  %>
+  <input type="text" name="img" placeholder="imagename.imagetype" value="<%= img %>"><br>
   <label>Body:</label><br>
   <textarea name="description" placeholder="The description..." rows="8" cols="80"><%= @amp.description %></textarea>
   <div class="">

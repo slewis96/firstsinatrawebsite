@@ -4,9 +4,17 @@
   <label>Price:</label><br>
   <input type="text" name="price" placeholder="£0000" value="<%= @guitar.price %>"><br>
   <label>Image:</label><br>
-  <input type="text" name="img" placeholder="url to image" value="<%= @guitar.img %>"><br>
+  <%
+  unless @guitar.img.class == NilClass
+    img = @guitar.img
+    img = img[img.index('/')+1, img.length]
+    img = img[img.index('/')+1, img.length]
+    img = img[img.index('/')+1, img.length]
+  end
+  %>
+  <input type="text" name="img" placeholder="url to image" value="<%= img %>"><br>
   <label>Body:</label><br>
-  <textarea name="description" placeholder="The description..." rows="8" cols="80"><%= @guitar.description %></textarea>
+  <textarea name="description" placeholder="The description..." rows="8" cols="60"><%= @guitar.description %></textarea>
   <div class="">
     <input type="submit" value="Save Entry">
   </div>

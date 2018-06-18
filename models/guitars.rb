@@ -28,7 +28,6 @@ class Guitars
     string = string.gsub("'", "''")
     string = string.gsub("<", "&lt;")
     string = string.gsub(">", "&gt;")
-    puts string
     return string
   end
   def self.find(id)
